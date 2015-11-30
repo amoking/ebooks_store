@@ -1,5 +1,7 @@
 <?php
 session_start();
+$page_title='Admin Area';
+include('includes/header.html');
 if(!isset($_SESSION['author_id']))
 {
 	require('author_login_tools.php');
@@ -7,8 +9,7 @@ if(!isset($_SESSION['author_id']))
 	load('author_login.php');
 	load();
 }
-	$page_title='Admin Area';
-	include('includes/header.html');
+
 	if(isset($_GET['id']))$_SESSION['id']=$_GET['id'];
 		require('connect_db.php');
 		$q= "SELECT * FROM books WHERE book_id=".$_SESSION['id']."";

@@ -25,18 +25,18 @@ if(isset($_GET['total'])#Checks if total from the cart is is set
 			$r=mysqli_query($dbc,$q);
 			while ($row= mysqli_fetch_array($r,MYSQLI_ASSOC))
 			{
-				/*$query="INSERT INTO order_contents
+				$query="INSERT INTO order_contents
 				(order_id,book_id,quantity,price)
 				VALUES ($order_id,".$row['book_id'].",".
 				$_SESSION['cart'][$row['book_id']]['quantity'].",".
 				$_SESSION['cart'][$row['book_id']]['price'].")";
-				$result=mysqli_query($dbc,$query);*/
+				$result=mysqli_query($dbc,$query);
 				echo '<table><tr><td>'.$row['title'].'<td>'
 				.$_SESSION['cart'][$row['book_id']]['price'].'</td></tr></table>';
 			}
-			/*if($result)
+			if($result)
 				{echo '<p>'.'We\'ll send your book to you shortly</p>';}
-			else{echo'<p>Error</p>';}*/
+			else{echo'<p>Error</p>';}
 			mysqli_close($dbc);
 				echo '<tr><td colspan="5">
 				Total= '.number_format($_GET['total'],2).'</td></tr>';
@@ -46,6 +46,7 @@ if(isset($_GET['total'])#Checks if total from the cart is is set
 		}
 		else#If cart is empty.
 		{echo '<p>There are no items in your cart.</p>';}
+               
 							
 		echo '<p><a href="shop.php">Shop</a>|
 		<a href="index.php">Home</a> |

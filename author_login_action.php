@@ -21,7 +21,5 @@ if ($_SERVER['REQUEST_METHOD']=='POST')
 	
 }
 mysqli_close($dbc);
-
-include('author_login.php');
 include('includes/footer.html');
 ?>

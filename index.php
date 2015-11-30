@@ -2,6 +2,7 @@
 session_start();
 $page_title='Home';
 include('includes/header.html');
+echo '<p><a href="admin_page.php">Site Admin</a></p> ';
 if ($_SESSION==NULL)#Checks if there are any variables in the $_SESSION[] array
 	{#if none exist
 		echo '<p>Welcome</p>';
@@ -24,6 +25,15 @@ else#If array $_SESSION has user related variables
 		echo'<p><a href="goodbye.php">Logout</a></p>';
 	}
 $page_title = 'Shop';#Sets the page title
+?>
+<h3>Search Book by Subject</h3> 
+	    <form  method="post" action="search.php?go"  id="searchform"> 
+	      <input  type="text" name="subject"> 
+	      <input  type="submit" name="submit" value="Search"> 
+	    </form> 
+	  </body> 
+
+<?php
 require('connect_db.php');#Connects to the database
 $q = "SELECT * FROM books";
 $r=mysqli_query($dbc,$q);
@@ -39,7 +49,8 @@ if(mysqli_num_rows($r)>0)#Checks if the store has any items listed
                     '<td>'.$img.'<br>'.
                     $row['title'].'<br>'.
                     $row['price'].'<br>'.
-					$row['summary'].'<br>'.
+                     '<a href="book_details.php?id='.$row['book_id'].
+                    '">Book Details</a>'.'<br>'.
                     '<a href="added.php?id='.$row['book_id'].
                     '">Add To Cart</a></td>';
 	}

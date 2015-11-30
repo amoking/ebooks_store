@@ -30,7 +30,8 @@ if(!isset($_SESSION['author_id']))
 	}
 	
 	mysqli_close($dbc);
-echo '<p><a href="add_book.php">Add a Book</a> |
+echo '<p><a href="add_book.php">Add a Book</a> 
+    |<a href="ordered_books.php">Sales figures</a> |
 		<a href="goodbye.php">Logout</a></p>';
 		include ('includes/footer.html');
 

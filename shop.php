@@ -1,6 +1,8 @@
 <?php
 session_start();#Starts a session
 $page_title='Shop';
+include('includes/header.html');
+echo '<p><a href="admin_page.php">Site Admin</a></p> ';
 if ($_SESSION==NULL)#If no one is logged in
 	{
 		echo '<p>Welcome</p>';
@@ -14,10 +16,19 @@ if ($_SESSION==NULL)#If no one is logged in
 else
 
 	{
+     echo '<p><a href="order_history.php">View Recent Orders</a></p>';
      echo ' <a href="goodbye.php">Logout</a>';#If a user is logged in.
         
 	}
-include('includes/header.html');
+?>
+<h3>Search Book by Subject</h3> 
+	    <form  method="post" action="search.php?go"  id="searchform"> 
+	      <input  type="text" name="subject"> 
+	      <input  type="submit" name="submit" value="Search"> 
+	    </form> 
+	  </body> 
+
+<?php
 require('connect_db.php');#Require a connection to the database
 $q = "SELECT * FROM books";#Retrieve all data from the books table.
 $r=mysqli_query($dbc,$q);
