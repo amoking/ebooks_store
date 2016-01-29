@@ -12,7 +12,9 @@ if (isset($_GET['id']))
                  ";
         $result=  mysqli_query($dbc, $q);
         if($result){
-            echo'<table>';
+            ?>
+<table id="bookDetails">
+                <?php
                 echo '<h2>'.'BOOK Details'. '</h2>';
                 echo '<tr><td>'.'Title'.'</td>'.'<td>'.'Summary'.'</td>'.'<td>'.'Price'.'</td>'.'<td>'. 'Author'. '</td></tr>';
                 echo '<tr>';
@@ -30,8 +32,8 @@ if (isset($_GET['id']))
         }
         
 }
-          echo '<p>
-	<a href= "shop.php">Shop</a> |
-	<a href= "index.php">Log In</a> </p>';
+?>
+ <input type="button" class="closePop" value="Continue Shopping"/>
+<?php
 	 include('includes/footer.html');
 

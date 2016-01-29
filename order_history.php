@@ -6,8 +6,7 @@ if(!isset($_SESSION['customer_id'] ))#checks if user is logged in
 {
 	require('login_tools.php');
 	require('login.php');
-	load('login.php');
-	load();
+		
 }
                 $customer_id= $_SESSION['customer_id'];
               require('connect_db.php');
@@ -17,11 +16,16 @@ if(!isset($_SESSION['customer_id'] ))#checks if user is logged in
                     orders.customer_id= $customer_id";
 
     $r=mysqli_query($dbc,$q);
+    
+
+   
     if($r)#If there is at least 1 row.
         {
-                echo'<table>';
+        ?>
+    <table id="order_history">
+        <?php
                 echo '<h2>Recent Orders</h2>';
-                echo '<tr><td>'.'ORDER ID'.'</td>'.'<td>'.'AMOUNT'.'</td'.'<td>'.'DATE'.'</td></tr>';
+                echo '<tr><td>'.'ORDER ID'.'</td>'.'<td>'.'AMOUNT'.'</td>'.'<td>'.'DATE'.'</td></tr>';
                 while ($row=mysqli_fetch_array($r,MYSQLI_ASSOC))#Retrieve all the data
                 {
            
@@ -38,8 +42,9 @@ if(!isset($_SESSION['customer_id'] ))#checks if user is logged in
  else {
             echo '<p>No data</p>';
  }
+ ?>
+<input type="button" class="closePop" value="Continue Shopping"/>
+<?php
 
-echo '<p>
-	<a href= "shop.php">Shop</a> |
-	<a href= "goodbye.php">Logout</a> </p>';
-	 include('includes/footer.html');
+
+

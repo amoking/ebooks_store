@@ -1,0 +1,22 @@
+<?-- JH 01/11/2013 -->
+<!-- example web page showing request to PHP page that returns HTML data -->
+
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#from_database').load('query_author.php');
+	});
+
+</script>
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<p>Here is the text returned from querying the database!</p>
+
+<div id="from_database"></div>
+
+</body>
+</html>

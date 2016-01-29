@@ -6,9 +6,10 @@ session_start();
 	session_unset();
 	session_destroy();
 	$_SESSION= array();
-	echo '<h1>Goodbye!</h1>
-		<p>You are logged out.</p>';
-		echo '<p><a href="shop.php">Shop</a>|
-		<a href="index.php">Home</a></p>';
+        ?>
+	<h1>Goodbye!</h1>
+		<p>You are logged out</p>
+<input type="button" class="closePop" value="Close and go Home"/>
+<?php
 		include('includes/footer.html');
 

@@ -1,3 +1,10 @@
+<script>
+    function closeWindow() {
+        window.opener.location.reload(true);
+         window.close();
+
+    }
+</script>
 <?php
 session_start();
 if(!isset($_SESSION['author_id']))
@@ -30,6 +37,9 @@ if(!isset($_SESSION['author_id']))
 	}
 	
 	mysqli_close($dbc);
+        ?>
+<a href="javascript:closeWindow();">Close and go Home</a>
+<?php
 echo '<p><a href="add_book.php">Add a Book</a> 
     |<a href="ordered_books.php">Sales figures</a> |
 		<a href="goodbye.php">Logout</a></p>';

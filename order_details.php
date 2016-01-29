@@ -24,28 +24,33 @@ if(!isset($_SESSION['customer_id'] ))#checks if user is logged in
     $r=mysqli_query($dbc,$q);
     if($r)#If there is at least 1 row.
         {
-                echo'<table>';
-                echo '<h2>'.'ORDER'.'   ' .$id.'    '. 'DETAILS' .'</h2>';
-                echo '<tr><td>'.'Book Description'.'</td>'.'<td>'.'Price'.'</td>'.'<td>'.'Quantity'.'</td></tr>';
+        ?>
+
+                        <h2>ORDER <?php echo $id;?> DETAILS</h2>
+                
+                <table id="order_details">
+                <tr><td>Book Description</td> <td>Price</td> <td>Quantity</td></tr>
+              <?php
                 while ($row=mysqli_fetch_array($r,MYSQLI_ASSOC))#Retrieve all the data
                 {
-           
-                    echo 
-                 '<tr><td>'. 
-                 $row['title'].'</td>'.
-				'<td>'.$row['price'].'</td>'.
-				#$row['summary'].'<br>'.#Display the books
-		'<td>'.$row['quantity'].'</td></tr>';
+                 $title= $row['title'];
+                 $price=$row['price'];
+                 $summary=$row['summary'];
+                 $quantity=$row['quantity']
+                
+             ?>
+                   
+                 <tr><td><?php echo $title?></td><td><?php echo$price?></td><td><?php echo$quantity?></td></tr>
 		 
+             <?php
                 }
-                echo '</table>';
+                echo '</table>';  
         }
  else {
             echo '<p>No data</p>';
  }
-
-echo '<p>
-	<a href= "shop.php">Shop</a> |
-	<a href= "goodbye.php">Logout</a> </p>';
+ ?>
+ <input type="button" class="closePop" value="Continue Shopping"/>
+<?php
 	 include('includes/footer.html');
 

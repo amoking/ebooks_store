@@ -30,11 +30,8 @@ if (mysqli_num_rows($r)==1)
 		' has been added to your cart</p>';
 	}
 	mysqli_close($dbc);
-	echo '<p><a href ="shop.php">Shop</a> |
-	<a href= "cart.php">View Cart</a> |
-	<a href ="forum.php">Forum</a> |
-	<a href="index.php">Home</a> |
-	<a href="goodbye.php">Logout</a></p>';
+	echo '<p><a href= "cart.php">View Cart</a> |
+            </p>';
 }
 include ('includes/footer.html');
 ?>

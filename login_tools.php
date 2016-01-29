@@ -11,34 +11,34 @@ function load($page='login.php')#Declare a function to load login.php
 }
 function validate($dbc, $email ='',$pwd='')#Function to validate login attempts
 {
-	$errors =array();#Array to store errors.
-	if(empty($email))
-	{$errors[]='Enter your email address.';}
-	else
-	{$e= mysqli_real_escape_string($dbc, trim($email));#Escapes any special characters 
+		$e= mysqli_real_escape_string($dbc, trim($email));#Escapes any special characters 
 		#to avoid codes being run on the database.
-		$email= strip_tags($email);}
-if (empty($pwd))
-{$errors[]= 'Enter your password.';}
-else
-{$p= mysqli_real_escape_string($dbc, trim($pwd));
-$pwd= strip_tags($pwd);	}
-if (empty ($errors))
-{
-	$q= "SELECT customer_id,first_name,last_name
+		$email= strip_tags($email);
+
+$p= mysqli_real_escape_string($dbc, trim($pwd));
+$pwd= strip_tags($pwd);	
+
+        $q= "SELECT *
 	FROM customers 
 	WHERE email='$e'
 	AND password= SHA1('$p')";#Retrieves customer related data
 	$r= mysqli_query($dbc,$q);
-	if(mysqli_num_rows($r)==1)#If only 1 row matches the data entered by the user.
+	if(($r))#If only 1 row matches the data entered by the user.
 	{
 		$row = mysqli_fetch_array($r,MYSQLI_ASSOC);
 		return array(true,$row);
 	}
 	#If no data is received or more than 1 entries exist.
-	else{$errors[]= 'Email address and password not found';} 
-	return array(false,$errors);
-}
+	else{echo 'Email address and password not found';
+        ?>
+<h2><a href="register.php">Or Register Here</a></h2>
+<h2><a href="author_login.php">Authors Login Here</a> </h2>
+        <?php
+        }
+        
+	
+        
+
 
 }
 

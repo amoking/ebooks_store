@@ -13,19 +13,19 @@ if ($_SERVER['REQUEST_METHOD']=='POST')#Checks if the submit button has been cli
 			i.e no errors*/
 	if($check)#If there are no errors in$check
 	{
-		session_start();#Starts a session and stores the data in the session
-		$_SESSION['customer_id']=$data['customer_id'];
+		#Starts a session and stores the data in the session
+		
+                $_SESSION['customer_id']=$data['customer_id'];
 		$_SESSION['first_name']=$data['first_name'];
 		$_SESSION['last_name']=$data['last_name'];
 		$page_title='Home';
 include('includes/header.html');
-	echo "<h1>HOME<h1>
-	<p>You are logged in, {$_SESSION['first_name']} {$_SESSION['last_name']} </p>";
-echo '<p>
-	<a href= "shop.php">Shop</a> |
-	<a href= "goodbye.php">Logout</a> </p>';
-			load ('home.php');
-			
+	echo "<p>You are logged in, {$_SESSION['first_name']} {$_SESSION['last_name']} </p>";
+        echo "<a href=\"javascript:history.go(-1)\">Your Cart</a>";
+?>
+<input type="button" class="closePop" value="Close and go Home"/>
+
+<?php
 		}
 		else #Any errors are placed in the $data variable.
 		{$errors=$data;}
@@ -33,5 +33,6 @@ echo '<p>
 }
 mysqli_close($dbc);#closes the database connection.
 include('includes/footer.html');
-include('login.php');
+
 ?>
+
